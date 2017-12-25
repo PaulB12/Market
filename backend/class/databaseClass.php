@@ -10,7 +10,7 @@ class databaseConnection {
 
 
     public function sanatize($input) {
-        $output = preg_replace('/[^A-Za-z0-9 !@#$%^&*():.]/u','', strip_tags($input));
+        $output = preg_replace('/[^A-Za-z0-9 !@#$%^&*():._]/u','', strip_tags($input));
         $output = htmlspecialchars($output);
         $output = mysqli_real_escape_string($this->conn,$output);
         return $output;

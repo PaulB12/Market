@@ -18,6 +18,15 @@ class databaseTable {
     public $players_steamid = "_SteamID";
     public $players_Inventory = "_Inventory";
     public $players_Money = "_Money";
+    public $players_online = "_Online";
+
+    //Item_values table
+    public $item_values_table = "item_values";
+    public $item_values_name = "_Name";
+    public $item_values_value = "_Value";
+    public $item_values_description = "_Description";
+    public $item_values_uniqueID = "_UniqueID";
+
 
 }
 ?>
