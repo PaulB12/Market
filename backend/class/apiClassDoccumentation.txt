@@ -1,0 +1,148 @@
+Doccumentation for apiClass.php - Created by PaulB
+
+Requirements:
+databaseClass.php
+apiClass.php
+databaseTable.php
+
+First off you need to require the class, do this by the following:
+
+require("filepath\apiClass.php");
+
+Next off you need to create a instance of the class, do this by:
+
+$web_to_server = new web_to_server();
+
+Once this is done you have access to the class
+------ FUNCTIONS ------
+
+fetchCurrentMoney($steamid);
+This function will allow you to fetch the player's wallet
+Do this by first calling the function and saving the response:
+
+$response = $web_to_server->fetchCurrentMoney("STEAM_0:0:81010017");
+
+Now you need to check if it was successfull a simple way of doing this is:
+
+$response = $web_to_server->fetchCurrentMoney("STEAM_0:0:81010017");
+if($response['status']) {
+    $players_money = $response['callback'];
+}
+
+From that, you have saved the players data to the variable players_money if it was successfull.
+
+
+checkIfUserExists($steamid);
+This function will allow you to check if the user exists in the database.
+Do this by calling the function in a if statement:
+
+if($web_to_server->checkIfUserExists('STEAM_0:0:81010017')) {
+    //Do stuff, user exists
+} else {
+    //Show error message and exit
+}
+
+
+fetchPlayersInventory($steamid);
+This function will allow you to grab the players inventory as a string.
+To call this function and save the response you simply do:
+
+$response = $web_to_server->fetchPlayersInventory('STEAM_0:0:81010017');
+if($response['status'] == 1) { //Checks if it was successfull
+    $playersInventory = $response['callback']; //Players inventory is saved to the var
+} else {
+    //Show error message and exit
+}
+
+
+checkIfItemExistsForPlayer($item_id, $amount, $steamid);
+This function will allow you to check if the user has X amount of an item.
+To call this function you simply do:
+
+$response = $web_to_server->checkIfItemExistsForPlayer("cw_m3super90",2,"STEAM_0:0:81010017"); //Will check if STEAM_0:0:81010017 has 2 Shotguns
+if($response['status'] == 1) { //Checks if it was successfull
+    //You then have access to these if you wish:
+    $ItemName = $response['ItemName']; //Items full name
+    $ItemID = $response['ItemID']; //Items ID
+    $ItemDesc = $response['ItemDescription'];//Items Description
+    $ItemValue = $response['ItemValue']; //Market value
+} else {
+    //Show error message and exit
+}
+
+
+checkIfPlayerIsOnline($steamid);
+This function will allow you to check if a player is currently online on the server.
+To call this function you simply do:
+
+$response = $web_to_server->checkIfPlayerIsOnline("STEAM_0:0:81010017"); //Will check if STEAM_0:0:81010017 is Online
+if($response == 1) {
+    //The player is online
+}
+elseif($response == 0) {
+    //The player is offline
+} else {
+    //The player does not exist in the database
+}
+
+insertIntoRemote($type, $server, $name, $steamid, $value1, $value2, $webhook);
+This function will allow you to easily insert into the remote table.
+To run this function all you have to do is input the 7 values:
+
+$web_to_server->insertIntoRemote("market_give_money","v4b1","Players Name (Optional)","STEAM_0:0:81010017","Value1","Value2",""); //In order to use the remote function, you need to know how sv_remote lua is going to use it.
+
+
+checkIfItemExistsInGame($item_id);
+This function will either return true or false if the item exists.
+To run this function all you have to do is simply:
+
+if($web_to_server->checkIfItemExistsInGame('cw_m3super90')) {
+    //Item exists
+} else {
+    //Item does not exist
+}
+
+
+removeItemFromPlayer($item_id, $amount, $steamid);
+This function will allow you to remove a item from a players inventory, will either do it in 60s if the player is online or instantly if he is offline.
+To run this function all you simply need to do is:
+
+$response = $web_to_server->remoteItemFromPlayer('cw_m3super90',1,'STEAM_0:0:81010017'); //Will remove 1 shotgun from the player if he/she has it.
+if($response['status'] == 1) {
+    //It was successfull
+} else {
+    //It was unsuccessfull, however you can echo $response['message']; to see why.
+}
+
+addItemToPlayer($item_id,$amount,$steamid);
+This function will allow you to add a item to a players inventory, will either do it in 60s if the player is online or instantly if he is offline.
+To run this function all you simply need to do is:
+
+$response = $web_to_server->addItemToPlayer('cw_m3super90',1,'STEAM_0:0:81010017'); //Will give 1 shotgun to the player within 60s if he is online or instantly if he is offline
+if($response['status'] == 1) {
+    //It was successfull
+} else {
+    //It was unsuccessfull, however you can echo $response['message']; to see why.
+}
+
+giveUserMoney($steamid,$amount);
+This function will allow you to give a user a specified amount of money, either within 60s if they are online or instantly if they are offline.
+To run this function all you simply need to do is:
+
+$response = $web_to_server->giveUserMoney('STEAM_0:0:81010017',1000); //Would give the user $1000
+if($response['status' == 1]) {
+    //It was successfull
+} else {
+    //You can echo the error message out using $response['message']
+}
+
+takeUserMoney($steamid,$amount);
+This function will allow you to take  a specified amount of money from a user, either within 60s if they are online or instantly if they are offline.
+To run this function all you simply need to do is:
+
+$response = $web_to_server->takeUserMoney('STEAM_0:0:81010017',1000); //Would take $1000
+if($response['status' == 1]) {
+    //It was successfull
+} else {
+    //You can echo the error message out using $response['message']
+}
