@@ -51,6 +51,9 @@ class databaseConnection {
     public function update($cols, $table, $vals, $expression='')
     {
         $result = $this->conn->query("UPDATE `".$table."` SET ".join(', `', preg_split('/,\s+/', $cols))." = ".join("', '", preg_split('/,\s+/', $vals))." ".$expression);
+        if (!$result){
+			die('Error: '.$this->conn->error);
+		}
     }
 }
 ?>
