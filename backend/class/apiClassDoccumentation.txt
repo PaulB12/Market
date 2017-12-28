@@ -125,22 +125,24 @@ if($response['status'] == 1) {
     //It was unsuccessfull, however you can echo $response['message']; to see why.
 }
 
-giveUserMoney($steamid,$amount);
+giveUserMoney($steamid,$amount,$message);
 This function will allow you to give a user a specified amount of money, either within 60s if they are online or instantly if they are offline.
+Note: $message is only sent to the server if the player is online.
 To run this function all you simply need to do is:
 
-$response = $web_to_server->giveUserMoney('STEAM_0:0:81010017',1000); //Would give the user $1000
+$response = $web_to_server->giveUserMoney('STEAM_0:0:81010017',1000,"$1000 has been deposited into your account!"); //Would give the user $1000
 if($response['status' == 1]) {
     //It was successfull
 } else {
     //You can echo the error message out using $response['message']
 }
 
-takeUserMoney($steamid,$amount);
+takeUserMoney($steamid,$amount,$message);
 This function will allow you to take  a specified amount of money from a user, either within 60s if they are online or instantly if they are offline.
+Note: $message is only sent to the server if the player is online.
 To run this function all you simply need to do is:
 
-$response = $web_to_server->takeUserMoney('STEAM_0:0:81010017',1000); //Would take $1000
+$response = $web_to_server->takeUserMoney('STEAM_0:0:81010017',1000,"$1000 has been withdrawn from your account!"); //Would take $1000
 if($response['status' == 1]) {
     //It was successfull
 } else {

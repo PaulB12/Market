@@ -1,0 +1,134 @@
+body {
+    background-color: #141414;
+}
+.header {
+    background-color: #a44928;
+}
+.header .header-title {
+    color: white;
+}
+.header .header-text {
+    color: #a6a6a6;
+}
+.inner-body {
+    background-color: #141414;
+    margin-top: 10px;
+    height: 400px;
+}
+.myListings .listingsTitle {
+    margin-top: 20px;
+    color: white;
+    background-color: #141414;
+}
+.sellButton {
+    margin-top: 20px;
+    color: white;
+    background-color: #a44928;
+    border: none;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    float: right;
+    margin-right: 15px;
+}
+.listingsTable thead {
+    background-color: #262626;
+    color: #616161;
+    font-size: 12px;
+}
+.listingsTable th {
+    border-right: 1px solid #141414;
+    border-bottom: none !important;
+}
+.center {
+    text-align: center;
+    vertical-align: middle !important;
+}
+.center .small {
+    font-size: 12px;
+}
+.center-only {
+    vertical-align: middle !important;
+}
+.listingsTable td {
+    border-top: none !important;
+    background-color: #333333;
+    color: white;
+}
+.listingsTable tr {
+    border-bottom: 5px solid #141414;
+}
+.listingsTable tbody:before {
+    content: "-";
+    display: block;
+    line-height: 1em;
+    color: transparent;
+}
+.listingsTable .img {
+    float: left;
+    vertical-align: middle;
+}
+.float-above {
+    vertical-align: top;
+    font-size: 14px;
+}
+.float-below {
+    vertical-align: bottom;
+    font-size: 14px;
+}
+.marketActivityTable {
+    margin-top: 20px;
+}
+.marketActivityTable thead {
+    background-color: #262626;
+    color: #616161;
+    font-size: 12px;
+}
+.marketActivityTable td {
+    border-top: none !important;
+    background-color: #333333;
+    color: white;
+}
+.marketActivityTable tr {
+    border-bottom: 5px solid #141414;
+}
+.marketActivityTable tbody:before {
+    content: "-";
+    display: block;
+    line-height: 1em;
+    color: transparent;
+}
+.marketActivityTable th {
+    border-right: 1px solid #141414;
+    border-bottom: none !important;
+}
+.img {
+    float: left;
+    vertical-align: middle;
+    border: 3px solid black !important;
+}
+.searchTitle {
+    color: white;
+}
+.searchText {
+    color: #636363;
+}
+.search-query {
+    background-color: #111111 !important;
+    border: none;
+}
+.blackButton {
+    background-color: #111111 !important;
+    color: white;
+}
+.searchByCategory {
+    margin-top: 20px;
+    font-size: 16px;
+    color: #636363;
+}
+.categoryRow {
+    background-color: #292929;
+    color: #999999;
+    padding: 5px;
+    border-top: 3px solid #111111;
+}
