@@ -1,0 +1,64 @@
+body {
+    background-color: #141414;
+}
+.header {
+    background-color: #2196F3;
+}
+.header .header-title {
+    color: white;
+}
+.header .header-text {
+    color: #ECEFF1;
+}
+.inner-body {
+    background-color: #141414;
+    margin-top: 10px;
+    height: 400px;
+}
+.center {
+    text-align: center;
+    vertical-align: middle !important;
+}
+.center .small {
+    font-size: 12px;
+}
+.center-only {
+    vertical-align: middle !important;
+}
+.float-above {
+    vertical-align: top;
+    font-size: 14px;
+}
+.float-below {
+    vertical-align: bottom;
+    font-size: 14px;
+    color: #6D6D6D;
+}
+.searchTitle {
+    color: white;
+}
+.searchText {
+    color: #636363;
+}
+.search-query {
+    background-color: #111111 !important;
+    border: none;
+}
+.blackButton {
+    background-color: #111111 !important;
+    color: white;
+}
+.searchByCategory {
+    margin-top: 20px;
+    font-size: 16px;
+    color: #636363;
+}
+.categoryRow {
+    background-color: #292929;
+    color: #999999;
+    padding: 5px;
+    border-top: 3px solid #111111;
+}
+.categoryTable a {
+    text-decoration: none;
+}

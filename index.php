@@ -1,6 +1,6 @@
 <?php
     $category = ["Cards","Clothing","Food","Government Vehicles","Ingredients","Misc.","Mixtures","Packaging","Vehicle Supplies","Vehicles"];
-    if( (!is_numeric($_GET["category"])) || ($_GET["category"] <= 0) || (5 * $_GET["category"]) > (count($category))) {
+    if((!isset($_GET["category"]) || (!is_numeric($_GET["category"])) || ($_GET["category"] <= 0) || (5 * $_GET["category"]) > (count($category)))) {
             $counter = 0;
     } else {
         $counter = $_GET["category"];
@@ -18,6 +18,7 @@
         <!-- Latest compiled and minified JavaScript -->
         <script src="/market/assets/bootstrap/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
         <link rel="stylesheet" href="/market/assets/css/index.css">
+        <link rel="stylesheet" href="/market/assets/css/template.css">
     </head>
     <body>
         <div class="container-fluid page">
@@ -65,7 +66,7 @@
                 </div>
                 <div class="col-xs-18 marketActivity">
                     <div class="col-xs-24 header">
-                        <h1 class="header-title center-only">Popular Market Activity</h1>
+                        <h3 class="header-title center-only">Popular Market Activity</h3>
                     </div>
                     <div class="col-xs-24 marketActivityTable">
                         <table class="table table-responsive">
@@ -83,8 +84,8 @@
                                         <strong>&nbsp;Fish</strong>
                                         <p>&nbsp;Food</p>
                                     </td>
-                                    <td class="center">
-                                        <strong class="small">2232</strong>
+                                    <td class="center small">
+                                        2232
                                     </td>
                                     <td class="center small">
                                         <p>Starting at:</p>
@@ -98,7 +99,7 @@
                                         <p>&nbsp;Vehicles</p>
                                     </td>
                                     <td class="center small">
-                                        <strong>100<strong>
+                                        100
                                     </td>
                                     <td class="center small">
                                         <p>Starting at:</p>
@@ -112,7 +113,7 @@
                                         <p>&nbsp;Vehicles</p>
                                     </td>
                                     <td class="center small">
-                                        <strong>21</strong>
+                                        21
                                     </td>
                                     <td class="center small">
                                         <p>Starting at:</p>
@@ -126,7 +127,7 @@
                                         <p>&nbsp;Vehicles</p>
                                     </td>
                                     <td class="center small">
-                                        <strong>19</strong>
+                                        19
                                     </td>
                                     <td class="center small">
                                         <p>Starting at:</p>
@@ -139,7 +140,7 @@
                                         <strong>&nbsp;Gold Fish</strong>
                                         <p>&nbsp;Food</p>
                                     </td>
-                                    <td class="center small"><strong>18</strong></td>
+                                    <td class="center small">18</td>
                                     <td class="center small">
                                         <p>Starting at:</p>
                                         <p>$1,000</p>
@@ -156,14 +157,16 @@
                         <p class="searchText">Looking for a specific item?</p>
                     </div>
                     <div class="searchBox col-xs-24">
-                        <div class="input-group">
-                            <input type="text" class="search-query form-control searchBar" placeholder="Search" id='query' name='query' />
-                            <span class="input-group-btn blackButton">
-                                <button class="btn blackButton" type="submit" style="height: 33px; top:0px;">
-                                    <span class="glyphicon glyphicon-search"></span>
-                                </button>
-                            </span>
-                        </div>
+                        <form method="get" action="search.php">
+                            <div class="input-group">
+                                <input type="text" class="search-query form-control searchBar" placeholder="Search" id='query' name='query' />
+                                <span class="input-group-btn blackButton">
+                                    <button class="btn blackButton" type="submit" style="height: 33px; top:0px;">
+                                        <span class="glyphicon glyphicon-search"></span>
+                                    </button>
+                                </span>
+                            </div>
+                        </form>
                     </div>
                     <div class="searchByCategory col-xs-24">
                         <p class="categorySearch">Browse by category:</p>
@@ -171,7 +174,10 @@
                             <?php
                                 $max = count($category);
                                 for($i = 0; $i < $max; $i++) {
-                                    echo "<div class='categoryRow'>{$category[$i]}</div>";
+                                    echo "
+                                    <a href='/market/search.php?category={$i}'>
+                                        <div class='categoryRow'>{$category[$i]}</div>
+                                    </a>";
                                 }
                              ?>
                         </div>
