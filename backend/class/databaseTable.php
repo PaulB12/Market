@@ -27,6 +27,10 @@ class databaseTable {
     public $item_values_description = "_Description";
     public $item_values_uniqueID = "_UniqueID";
 
+    //Bans table
+    public $ban_table = "bans";
+    public $ban_time = "TIMESTAMPDIFF(SECOND, NOW(), unban_time) as timeleft";
+    public $ban_steamid = "steamid";
 
 }
 ?>

@@ -37,7 +37,17 @@ class web_to_server
             return $response;
         }
     }
-
+    public function checkIfUsedBanned($steamid) {
+        $result = $this->database->select("{$this->databaseTable->ban_time}","{$this->databaseTable->ban_table}","WHERE `{$this->databaseTable->ban_steamid}` = '$steamid'");
+        $ban = false;
+        while($row=mysqli_fetch_assoc($result)) {
+            $timeleft = $row["timeleft"];
+            if($timeleft < 0) {
+                $ban = true;
+            }
+        }
+        return $ban;
+    }
     public function checkIfUserExists($steamid)
     {
         $steamid = $this->database->sanatize($steamid);
