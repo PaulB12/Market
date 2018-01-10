@@ -1,0 +1,132 @@
+.content {
+    font-family: 'Montserrat', sans-serif;
+    background-color: #262626;
+    margin-top: 40px;
+    padding-bottom: 50px;
+}
+.image-holder {
+    float: left;
+    margin-top: 30px;
+    margin-left: 30px;
+}
+.image {
+    border: 10px solid #111111;
+}
+.item-header {
+    line-height: 3em;
+    color: white;
+    font-size: 32px;
+}
+.item-description {
+    color: white;
+    position: relative;
+    left: 10px;
+    margin-top: -20px;
+    font-size: 18px;
+}
+.sellBox, .buyBox {
+    margin-top: 30px;
+    background-color: #333333;
+}
+.sellHeader, .buyHeader {
+    color: white;
+    font-family: 'Montserrat', sans-serif;
+}
+hr {
+    display: block;
+    height: 1px;
+    border: 0;
+    border-top: 3px solid black;
+    margin-top: -5px;
+    padding: 0;
+}
+.row1 {
+    background-color: #404040 !important;
+    border: none !important;
+}
+.buyTitle, .sellTitle {
+    text-align: center;
+    color: grey;
+    font-size: 18px;
+    line-height: 3em;
+}
+.strongWhite {
+    font-weight: bold;
+    color: white;
+}
+.button {
+    background: linear-gradient(rgb(5, 56, 97) 9%, rgb(1, 54, 95) 50%) rgb(5, 56, 97);
+    border-radius: 5px; border: 2px solid #042a49;
+    display: inline-block;
+    cursor: pointer;
+    color: white;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 26px;
+    font-weight: bold;
+    padding: 0px 60px;
+    text-decoration: none;
+}
+.button:hover {
+    background: linear-gradient(rgb(10, 111, 194) 9%, rgb(6, 109, 192) 50%) rgb(10,111,194);
+    border-radius: 5px; border: 2px solid #085391;
+    display: inline-block;
+    cursor: pointer;
+    color: white;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 26px;
+    font-weight: bold;
+    padding: 0px 60px;
+    text-decoration: none;
+}
+.quantityTable {
+    margin: 0px auto;
+    border: 0px !important;
+}
+.quantityTable table {
+    border-bottom: 0px !important;
+}
+.quantityTable thead {
+    color: grey;
+    font-weight: bold;
+    text-align: center;
+}
+
+.table.no-border tr td, .table.no-border tr th {
+    border-width: 0;
+    font-size: 16px;
+}
+.quantityTable tbody {
+    color: grey;
+    text-align: center;
+    border: none;
+}
+.quantityTable table thead tr th {
+    text-align: center;
+    font-size: 22px !important;
+}
+.moreContent {
+    font-family: 'Montserrat', sans-serif;
+    background-color: #262626;
+    margin-top: 40px;
+    padding-bottom: 50px;
+}
+.activityHeader {
+    font-size: 26px;
+    color: white;
+}
+.activityImage {
+    border: 4px solid grey !important;
+    border-radius: 4px;
+}
+.strongGreyText {
+    font-weight: bold;
+    font-size: 18px;
+    color: grey;
+}
+.activity {
+    color: grey;
+    font-size: 18px;
+}
+.activityRow {
+    padding-bottom: 5px;
+}

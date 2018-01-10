@@ -1,7 +1,7 @@
 <?php
     $category = ["Cards","Clothing","Food","Government Vehicles","Ingredients","Misc.","Mixtures","Packaging","Vehicle Supplies","Vehicles"];
     if(isset($_GET["category"])) {
-        if(((!is_numeric($_GET["category"])) || ($_GET["category"] <= 0) || ($_GET["category"]) > (count($category)))) {
+        if(((!is_numeric($_GET["category"])) || ($_GET["category"] <= 0) || ($_GET["category"]) >= (count($category)))) {
                 $counter = 0;
         } else {
             $counter = $_GET["category"];
@@ -35,7 +35,7 @@
         <link rel="stylesheet" href="/market/assets/bootstrap/css/bootstrap-theme.min.css">
 
         <!-- Latest compiled and minified JavaScript -->
-        <script src="/market/assets/bootstrap/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+        <script src="/market/assets/bootstrap/js/bootstrap.min.js"></script>
         <link rel="stylesheet" href="/market/assets/css/search.css">
         <link rel="stylesheet" href="/market/assets/css/template.css">
     </head>

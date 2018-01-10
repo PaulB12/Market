@@ -1,6 +1,6 @@
 <?php
     $category = ["Cards","Clothing","Food","Government Vehicles","Ingredients","Misc.","Mixtures","Packaging","Vehicle Supplies","Vehicles"];
-    if((!isset($_GET["category"]) || (!is_numeric($_GET["category"])) || ($_GET["category"] <= 0) || (5 * $_GET["category"]) > (count($category)))) {
+    if((!isset($_GET["category"]) || (!is_numeric($_GET["category"])) || ($_GET["category"] <= 0) || (5 * $_GET["category"]) >= (count($category)))) {
             $counter = 0;
     } else {
         $counter = $_GET["category"];
@@ -15,8 +15,11 @@
         <!-- Optional theme -->
         <link rel="stylesheet" href="/market/assets/bootstrap/css/bootstrap-theme.min.css">
 
+        <!-- Google Font's -->
+        <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
+
         <!-- Latest compiled and minified JavaScript -->
-        <script src="/market/assets/bootstrap/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+        <script src="/market/assets/bootstrap/js/bootstrap.min.js"></script>
         <link rel="stylesheet" href="/market/assets/css/index.css">
         <link rel="stylesheet" href="/market/assets/css/template.css">
     </head>
