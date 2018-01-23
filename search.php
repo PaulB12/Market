@@ -24,6 +24,9 @@
     if(isset($searchString) && !isset($counter)) {
         $resultString = "Showing results for - Search: {$searchString}";
     }
+    if(!isset($searchString) && !isset($counter)) {
+        $resultString = "No search specified!";
+    }
 ?>
 <html>
     <head>

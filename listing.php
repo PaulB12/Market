@@ -1,6 +1,9 @@
 <html>
     <head>
         <title>LimeLight - Market</title>
+        <!-- JQuery -->
+        <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+
         <!-- Latest compiled and minified CSS -->
         <link rel="stylesheet" href="/market/assets/bootstrap/css/bootstrap.css">
 
@@ -19,8 +22,82 @@
         <!-- Market house css files -->
         <link rel="stylesheet" href="/market/assets/css/listing.css">
         <link rel="stylesheet" href="/market/assets/css/template.css">
+        <link rel="stylesheet" href="/market/assets/css/buy-modal.css">
+        <link rel="stylesheet" href="/market/assets/css/sell-modal.css">
     </head>
     <body>
+        <div class="sell-modal-box">
+            <div class="sell-modal-header">
+                <h4>List an item for sale<span class="sell-close" style="float: right;">&times;</span></h4>
+            </div>
+            <div class="sell-modal-content">
+                <div class="sell-modal-inner-content">
+                    <div class="sell-modal-inner-main">
+                        <img class="sell-modal-image" src="http://via.placeholder.com/128x128" height=128 width=128>
+                        <div class="item-description-sell-modal"><strong>Goldfish<br>Studies indicate that more than 41 goldfish are flushed down the toilet everyday.<br>They ended up in the lake, and now they're in your inventory.</div>
+                    </div>
+                    <hr>
+                    <div class="sell-modal-inner-main-sec-wrapper">
+                        <div class="sell-modal-inner-main-sec">
+                            <div class="graph-title">
+                                Average Sale Price
+                            </div>
+                            <div style="max-height:250px; max-width: 100%">
+                                <canvas id="sell-modal-graph" width="1000" height="250"></canvas>
+                            </div>
+                        </div>
+                    </div>
+                    <hr>
+                    <div class="sell-modal-inner-main-sec2-wrapper">
+                        <div class="sell-modal-inner-main2-sec">
+                            <div class="sellText">
+                                Quantity: <input type="number" min="1" step="1" value="1" data-number-to-fixed="2" data-number-stepfactor="100" class="quantity">
+                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;You recieve: $
+                                <input type="text" value="10,000.00" data-number-to-fixed="2" data-number-stepfactor="100" class="sellerRecieve" id="sellerRecieve">
+                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Buyer pays: $
+                                <input type="text" value="10,200.00" class="buyerPays" id="buyerPays">
+                            </div>
+                            <span class="button-sell-modal">Sell this item</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="buy-modal-box">
+            <div class="buy-modal-header">
+                <h4>Buy an item<span class="buy-close" style="float: right;">&times;</span></h4>
+            </div>
+            <div class="buy-modal-content">
+                <div class="buy-modal-inner-content">
+                    <div class="buy-modal-inner-main">
+                        <img class="buy-modal-image" src="http://via.placeholder.com/128x128" height=128 width=128>
+                        <div class="item-description-buy-modal"><strong>Goldfish<br>Studies indicate that more than 41 goldfish are flushed down the toilet everyday.<br>They ended up in the lake, and now they're in your inventory.</div>
+                    </div>
+                    <hr>
+                    <div class="buy-modal-inner-main-sec-wrapper">
+                        <div class="buy-modal-inner-main-sec">
+                            <div class="graph-title">
+                                Average Sale Price
+                            </div>
+                            <div style="max-height:250px; max-width: 100%">
+                                <canvas id="buy-modal-graph" width="1000" height="250"></canvas>
+                            </div>
+                        </div>
+                    </div>
+                    <hr>
+                    <div class="buy-modal-inner-main-sec2-wrapper">
+                        <div class="buy-modal-inner-main2-sec">
+                            <div class="sellText">
+                                Quantity: <input type="number" min="1" step="1" value="1" data-number-to-fixed="2" data-number-stepfactor="100" class="quantity">
+                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;You pay: $
+                                <input type="text" value="1,000.00" data-number-to-fixed="2" data-number-stepfactor="100" class="buyPays" id="buyPays">
+                            </div>
+                            <span class="button-buy-modal">Buy this item</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
         <div class="container-fluid">
             <div class="col-xs-24">
                 &nbsp;
@@ -57,7 +134,7 @@
                             <div class="sellTitle">
                                 <span class="strongWhite">18</span> for sale starting at <span class="strongWhite">$450</span>
                                 <br>
-                                <span class="button">Buy...</span>
+                                <span class="button" id="buyBtn">Buy...</span>
                             </div>
                             <br>
                             <hr>
@@ -105,7 +182,7 @@
                             <div class="buyTitle">
                                 <span class="strongWhite">32</span> requests to buy at <span class="strongWhite">$440</span> or lower
                                 <br>
-                                <span class="button">Sell...</span>
+                                <span class="button" id="sellBtn">Sell...</span>
                             </div>
                             <br>
                             <hr>
@@ -176,72 +253,5 @@
             </div>
         </div>
     </body>
+    <script src="assets/js/listing.js"></script>
 </html>
-<script>
-var ctx = document.getElementById('medianChart').getContext('2d');
-var chart = new Chart(ctx, {
-    // The type of chart we want to create
-    type: 'line',
-
-    // The data for our dataset
-    data: {
-        labels: ["January", "February", "March", "April", "May", "June", "July"],
-        datasets: [{
-            label: 'Price ($)',
-            backgroundColor: 'rgba(0, 204, 147, 0.1)',
-            borderColor: 'rgb(0, 204, 147)',
-            data: [0, 10, 5, 2, 20, 30, 45],
-        }]
-    },
-
-    // Configuration options go here
-    options: {
-        fill: false
-    }
-});
-
-var ctx = document.getElementById('orders').getContext('2d');
-var chart = new Chart(ctx, {
-    // The type of chart we want to create
-    type: 'line',
-
-    // The data for our dataset
-    data: {
-        labels: ["$0.04", "$0.10", "$0.15", "$0.20", "$0.25", "$0.30", "$0.32"],
-        datasets: [{
-            label: 'Buy Orders',
-            data: [40, 25, 10, 0, 0, 0, 0],
-            backgroundColor: 'rgba(102, 140, 255, 0.1)',
-            borderColor: [
-                'rgb(77, 121, 255)',
-                'rgb(77, 121, 255)',
-                'rgb(77, 121, 255)',
-                'rgba(0, 0, 0, 0)',
-                'rgba(0, 0, 0, 0)',
-                'rgba(0, 0, 0, 0)',
-                'rgba(0, 0, 0, 0)'
-            ],
-            borderWidth: 1
-        },{
-            label: 'Sell Orders',
-            data: [0, 0, 0, 0, 20, 30, 55],
-            backgroundColor: 'rgba(0, 204, 147, 0.1)',
-            borderColor: [
-                'rgba(0, 0, 0, 0)',
-                'rgba(0, 0, 0, 0)',
-                'rgba(0, 0, 0, 0)',
-                'rgba(0, 0, 0, 0)',
-                'rgb(0, 204, 147)',
-                'rgb(0, 204, 147)',
-                'rgb(0, 204, 147)'
-            ],
-            borderWidth: 1
-        }]
-    },
-
-    // Configuration options go here
-    options: {
-        fill: false
-    }
-});
-</script>

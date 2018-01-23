@@ -57,13 +57,13 @@ hr {
 .button {
     background: linear-gradient(rgb(5, 56, 97) 9%, rgb(1, 54, 95) 50%) rgb(5, 56, 97);
     border-radius: 5px; border: 2px solid #042a49;
-    display: inline-block;
     cursor: pointer;
+    display: inline-block;
     color: white;
     font-family: 'Montserrat', sans-serif;
     font-size: 26px;
+    width: 100% !important;
     font-weight: bold;
-    padding: 0px 60px;
     text-decoration: none;
 }
 .button:hover {
@@ -74,8 +74,8 @@ hr {
     color: white;
     font-family: 'Montserrat', sans-serif;
     font-size: 26px;
+    width: 100% !important;
     font-weight: bold;
-    padding: 0px 60px;
     text-decoration: none;
 }
 .quantityTable {
