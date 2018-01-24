@@ -1,7 +1,7 @@
 $("#buyPays").keyup(function(event) {
     if (event.keyCode == 38) {
         var buyPays = $(this).val().replace(/,/g, "");
-        var buyPays = parseFloat(buyPays) + 100;
+        var buyPays = parseFloat(buyPays) + 1000;
         var val = (buyPays.toFixed(2).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ","));
         $(this).val(val);
         if (val < 0) {
@@ -10,7 +10,7 @@ $("#buyPays").keyup(function(event) {
     }
     if (event.keyCode == 40) {
         var buyPays = $(this).val().replace(/,/g, "");
-        var buyPays = parseFloat(buyPays) - 100;
+        var buyPays = parseFloat(buyPays) - 1000;
         var val = (buyPays.toFixed(2).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ","));
         if (val < 0) {
             var val = 0;
@@ -21,7 +21,7 @@ $("#buyPays").keyup(function(event) {
 $("#buyerPays").keyup(function(event) {
     if (event.keyCode == 38) {
         var buyerPays = $(this).val().replace(/,/g, "");
-        var buyerPays = parseFloat(buyerPays) + 100;
+        var buyerPays = parseFloat(buyerPays) + 1000;
         var sellerRecieve = (buyerPays * 0.98).toFixed(2).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
         var val = (buyerPays.toFixed(2).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ","));
         if (val < 0 || sellerRecieve < 0) {
@@ -33,7 +33,7 @@ $("#buyerPays").keyup(function(event) {
     }
     if (event.keyCode == 40) {
         var buyerPays = $(this).val().replace(/,/g, "");
-        var buyerPays = parseFloat(buyerPays) - 100;
+        var buyerPays = parseFloat(buyerPays) - 1000;
         var sellerRecieve = (buyerPays * 0.98).toFixed(2).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
         var val = (buyerPays.toFixed(2).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ","));
         if (val < 0 || sellerRecieve < 0) {
@@ -47,7 +47,7 @@ $("#buyerPays").keyup(function(event) {
 $("#sellerRecieve").keyup(function(event) {
     if (event.keyCode == 38) {
         var sellerRecieve = $(this).val().replace(/,/g, "");
-        var sellerRecieve = parseFloat(sellerRecieve) + 100;
+        var sellerRecieve = parseFloat(sellerRecieve) + 1000;
         var buyerPays = (sellerRecieve * 1.02).toFixed(2).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
         var val = (sellerRecieve.toFixed(2).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ","));
         if (val < 0 || buyerPays < 0) {
@@ -59,7 +59,7 @@ $("#sellerRecieve").keyup(function(event) {
     }
     if (event.keyCode == 40) {
         var sellerRecieve = $(this).val().replace(/,/g, "");
-        var sellerRecieve = parseFloat(sellerRecieve) - 100;
+        var sellerRecieve = parseFloat(sellerRecieve) - 1000;
         var buyerPays = (sellerRecieve * 1.02).toFixed(2).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
         var val = (sellerRecieve.toFixed(2).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ","));
         if (val < 0 || buyerPays < 0) {

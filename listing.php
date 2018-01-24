@@ -19,11 +19,15 @@
         <!-- Chart JS file -->
         <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.4.0/Chart.min.js"></script>
 
+        <!-- Sweet Alert file -->
+        <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+
         <!-- Market house css files -->
         <link rel="stylesheet" href="/market/assets/css/listing.css">
         <link rel="stylesheet" href="/market/assets/css/template.css">
         <link rel="stylesheet" href="/market/assets/css/buy-modal.css">
         <link rel="stylesheet" href="/market/assets/css/sell-modal.css">
+        <link rel="stylesheet" href="/market/assets/css/ajax-loader.css">
     </head>
     <body>
         <div class="sell-modal-box">
@@ -57,7 +61,7 @@
                                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Buyer pays: $
                                 <input type="text" value="10,200.00" class="buyerPays" id="buyerPays">
                             </div>
-                            <span class="button-sell-modal">Sell this item</span>
+                            <span class="button-sell-modal" onclick="sellItem(2)">Sell this item</span>
                         </div>
                     </div>
                 </div>
@@ -88,11 +92,11 @@
                     <div class="buy-modal-inner-main-sec2-wrapper">
                         <div class="buy-modal-inner-main2-sec">
                             <div class="sellText">
-                                Quantity: <input type="number" min="1" step="1" value="1" data-number-to-fixed="2" data-number-stepfactor="100" class="quantity">
+                                Quantity: <input type="number" min="1" step="1" value="1" data-number-to-fixed="2" data-number-stepfactor="100" class="bquantity">
                                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;You pay: $
                                 <input type="text" value="1,000.00" data-number-to-fixed="2" data-number-stepfactor="100" class="buyPays" id="buyPays">
                             </div>
-                            <span class="button-buy-modal">Buy this item</span>
+                            <span class="button-buy-modal" onclick="buyItem(2)">Buy this item</span>
                         </div>
                     </div>
                 </div>
@@ -103,8 +107,10 @@
                 &nbsp;
             </div>
             <div class="col-xs-24 header">
-                <h1 class="header-title">Community Market</h1>
-                <p class="header-text">Buy and sell in-game items with other LimeLight community members.</p>
+                <a href="/market/">
+                    <h1 class="header-title">Community Market</h1>
+                    <p class="header-text">Buy and sell in-game items with other LimeLight community members.</p>
+                </a>
             </div>
             <div class="col-xs-24 main">
                 <div class="col-xs-3"></div>
@@ -254,4 +260,5 @@
         </div>
     </body>
     <script src="assets/js/listing.js"></script>
+    <script src="assets/js/ajax.js"></script>
 </html>

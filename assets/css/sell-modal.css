@@ -46,7 +46,7 @@
 .sell-modal-box {
     position: fixed;
     background-color: #fefefe;
-    overflow: hidden;
+    overflow: auto;
     width: 80%;
     height: 100%;
     display: none;

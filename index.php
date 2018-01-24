@@ -9,6 +9,9 @@
 <html>
     <head>
         <title>LimeLight - Market</title>
+        <!-- JQuery -->
+        <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+
         <!-- Latest compiled and minified CSS -->
         <link rel="stylesheet" href="/market/assets/bootstrap/css/bootstrap.css">
 
@@ -30,8 +33,10 @@
             </div>
 
             <div class="col-xs-24 header">
-                <h1 class="header-title">Community Market</h1>
-                <p class="header-text">Buy and sell in-game items with other LimeLight community members.</p>
+                <a href="/market/">
+                    <h1 class="header-title">Community Market</h1>
+                    <p class="header-text">Buy and sell in-game items with other LimeLight community members.</p>
+                </a>
             </div>
             <div class="col-xs-24 inner-body">
                 <div class="myListings">
@@ -53,16 +58,16 @@
                         </thead>
                         <tbody>
                             <tr>
-                                <td><img class="img" src="http://via.placeholder.com/48x48"><strong class="float-top">&nbsp;BMW i8</strong><p class="float-below">&nbsp;Vehicles</p></td>
-                                <td class="center small">Dec 26th</td>
-                                <td class="center small">$4,000,000</td>
-                                <td class="center small">Remove</td>
+                                <td class="link" data-href='listing.php?id='><img class="img" src="http://via.placeholder.com/48x48"><strong class="float-top">&nbsp;BMW i8</strong><p class="float-below">&nbsp;Vehicles</p></td>
+                                <td class="center small link" data-href='listing.php?id='>Dec 26th</td>
+                                <td class="center small link" data-href='listing.php?id='>$4,000,000</td>
+                                <td class="center small"><a href="#">Remove</href></td>
                             </tr>
                             <tr>
-                                <td><img class="img" src="http://via.placeholder.com/48x48"><strong class="float-top">&nbsp;Lamborghini Reventon</strong><p class="float-below">&nbsp;Vehicles</p></td>
-                                <td class="center small">Dec 27th</td>
-                                <td class="center small">$10,000,000</td>
-                                <td class="center small">Remove</td>
+                                <td class="link" data-href='listing.php?id='><img class="img" src="http://via.placeholder.com/48x48"><strong class="float-top">&nbsp;Lamborghini Reventon</strong><p class="float-below">&nbsp;Vehicles</p></td>
+                                <td class="center small link" data-href='listing.php?id='>Dec 27th</td>
+                                <td class="center small link" data-href='listing.php?id='>$10,000,000</td>
+                                <td class="center small"><a href="#">Remove</a></td>
                             </tr>
                         </tbody>
                     </table>
@@ -81,7 +86,7 @@
                                 <tr>
                             </thead>
                             <tbody>
-                                <tr>
+                                <tr class="link" data-href='listing.php?id='>
                                     <td class="small">
                                         <img class="img" src="http://via.placeholder.com/64x64" width="64" height="64">
                                         <strong>&nbsp;Fish</strong>
@@ -95,7 +100,7 @@
                                         <p>$225</p>
                                     </td>
                                 </tr>
-                                <tr>
+                                <tr class="link" data-href='listing.php?id='>
                                     <td class="small">
                                         <img class="img" src="http://via.placeholder.com/64x64" width="64" height="64">
                                         <strong>&nbsp;BMW i8</strong>
@@ -109,7 +114,7 @@
                                         <p>$1,000,000</p>
                                     </td>
                                 </tr>
-                                <tr>
+                                <tr class="link" data-href='listing.php?id='>
                                     <td class="small">
                                         <img class="img" src="http://via.placeholder.com/64x64" width="64" height="64">
                                         <strong>&nbsp;Lamborghini Reventon</strong>
@@ -123,7 +128,7 @@
                                         <p>$10,000,000</p>
                                     </td>
                                 </tr>
-                                <tr>
+                                <tr class="link" data-href='listing.php?id='>
                                     <td class="small">
                                         <img class="img" src="http://via.placeholder.com/64x64" width="64" height="64">
                                         <strong>&nbsp;Tides Truck</strong>
@@ -137,7 +142,7 @@
                                         <p>$100,000</p>
                                     </td>
                                 </tr>
-                                <tr>
+                                <tr class="link" data-href='listing.php?id='>
                                     <td class="small">
                                         <img class="img" src="http://via.placeholder.com/64x64" width="64" height="64">
                                         <strong>&nbsp;Gold Fish</strong>
@@ -189,4 +194,5 @@
             </div>
         </div>
     </body>
+    <script src="assets/js/index.js"></script>
 </html>

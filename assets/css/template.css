@@ -23,6 +23,9 @@ body {
 .center .small {
     font-size: 12px;
 }
+.header a {
+    text-decoration: none;
+}
 .center-only {
     vertical-align: middle !important;
 }
@@ -34,6 +37,9 @@ body {
     vertical-align: bottom;
     font-size: 14px;
     color: #6D6D6D;
+}
+.link {
+    cursor: pointer;
 }
 .searchTitle {
     color: white;

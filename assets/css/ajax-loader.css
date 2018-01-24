@@ -1,0 +1,55 @@
+.button-ajax-modal {
+    background: linear-gradient(rgb(5, 56, 97) 9%, rgb(1, 54, 95) 50%) rgb(5, 56, 97);
+    border-radius: 5px; border: 2px solid #042a49;
+    cursor: pointer;
+    color: white;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 14px;
+    padding: 0px 10px;
+    margin-right: 30px;
+    text-decoration: none;
+    float: right;
+}
+.button-ajax-modal:hover {
+    background: linear-gradient(rgb(10, 111, 194) 9%, rgb(6, 109, 192) 50%) rgb(10,111,194);
+    border-radius: 5px; border: 2px solid #085391;
+    display: inline-block;
+    cursor: pointer;
+    color: white;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 14px;
+    padding: 0px 10px;
+    text-decoration: none;
+}
+.swal-modal {
+    background-color: #141414;
+}
+.swal-text {
+  background-color: #141414;
+  display: block;
+  margin: 22px;
+  text-align: center;
+  color: white;
+}
+.swal-title {
+  margin: 0px;
+  font-size: 22px;
+  color: white;
+  box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.21);
+  margin-bottom: 28px;
+}
+.swal-button {
+  padding: 7px 19px;
+  background-color: black;
+  font-size: 12px;
+  border: 1px solid black;
+  color: white;
+}
+.swal-button:focus {
+    outline: none;
+    box-shadow: none;
+}
+.swal-button:active {
+    background-color: #444444;
+    border: 1px solid #444444;
+}

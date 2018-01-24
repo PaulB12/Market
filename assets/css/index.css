@@ -14,6 +14,11 @@
     float: right;
     margin-right: 15px;
 }
+.table td a {
+    text-decoration: none;
+    display: block;
+    color: white;
+}
 .listingsTable thead {
     background-color: #262626;
     color: #616161;

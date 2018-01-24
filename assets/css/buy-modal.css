@@ -46,7 +46,7 @@
 .buy-modal-box {
     position: fixed;
     background-color: #fefefe;
-    overflow: hidden;
+    overflow: auto;
     width: 80%;
     height: 100%;
     display: none;
@@ -113,7 +113,7 @@ hr {
     color: white;
     border: 4px solid black;
 }
-.quantity {
+.bquantity {
     border-radius: 5px;
     width: 80px;
     background-color: #222222;
@@ -121,7 +121,7 @@ hr {
     border: 4px solid black;
     text-align: center;
 }
-.quantity::-webkit-inner-spin-button, .quantity::-webkit-outer-spin-button {
+.bquantity::-webkit-inner-spin-button, .bquantity::-webkit-outer-spin-button {
     -webkit-appearance: none !important;
     margin: 0 !important;
     -moz-appearance:textfield !important;
