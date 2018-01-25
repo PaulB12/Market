@@ -41,7 +41,10 @@
             <div class="col-xs-24 inner-body">
                 <div class="myListings">
                     <h4 class="col-xs-16 listingsTitle">My sell listings <small>(2)</small></h4>
-                    <div class="col-xs-3"></div>
+                    <div class="col-xs-4"></div>
+                    <div class="col-xs-2 sellButton2">
+                        <a href="history.php">Transactions</a>
+                    </div>
                     <div class="col-xs-2 sellButton">
                         <a href="inventory.php">Sell an item</a>
                     </div>
