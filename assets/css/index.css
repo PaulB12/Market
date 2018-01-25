@@ -5,7 +5,6 @@
 }
 .sellButton {
     margin-top: 20px;
-    color: white;
     background-color: #2196F3;
     border: none;
     text-align: center;
@@ -13,6 +12,10 @@
     display: inline-block;
     float: right;
     margin-right: 15px;
+}
+.sellButton a {
+    color: white;
+    text-decoration: none;
 }
 .table td a {
     text-decoration: none;

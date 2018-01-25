@@ -117,12 +117,10 @@
                 <div class="col-xs-18 content">
                     <div class="inner-content">
                         <div class="image-holder">
-                            <img src="http://via.placeholder.com/360x360" width=360 height=360 class="image">
+                            <img src="https://i.imgur.com/dS5I3uj.jpg" width=360 height=360 class="image">
                         </div>
                         <div class="item-info">
-                            <h2 class="item-header">
-                                &nbsp;Category > Food > Goldfish
-                            </h2>
+                            <h2 class="item-header">Category > Food > Goldfish</h2>
                             <p class="item-description">
                                 Studies indicate that more than 41 goldfish are flushed down the toilet everyday.<br>They ended up in the lake, and now they're in your inventory.
                             </p>
@@ -188,7 +186,7 @@
                             <div class="buyTitle">
                                 <span class="strongWhite">32</span> requests to buy at <span class="strongWhite">$440</span> or lower
                                 <br>
-                                <span class="button" id="sellBtn">Sell...</span>
+                                <span class="button" onclick="sellModal(2)">Sell...</span>
                             </div>
                             <br>
                             <hr>
@@ -259,6 +257,8 @@
             </div>
         </div>
     </body>
-    <script src="assets/js/listing.js"></script>
+    <script src="assets/js/buy-modal.js"></script>
+    <script src="assets/js/sell-modal.js"></script>
     <script src="assets/js/ajax.js"></script>
+    <script src="assets/js/listing.js"></script>
 </html>

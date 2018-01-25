@@ -3,9 +3,9 @@ function buyItem(item_id) {
     var pri = $('#buyPays').val();
     var qty = $('.bquantity').val();
     if(qty == 1) {
-        text = 'Are you sure you wish to buy '+qty+' '+name+'for $'+pri+'?';
+        text = 'Are you sure you wish to buy '+qty+' '+name+' for $'+pri+'?';
     } else {
-        text = 'Are you sure you wish to buy '+qty+' '+name+'for $'+pri+' (each)?';
+        text = 'Are you sure you wish to buy '+qty+' '+name+' for $'+pri+' (each)?';
     }
     swal({
         icon: "info",
@@ -49,6 +49,13 @@ function buyItem(item_id) {
                                 text: "Sadly, there was an error placing your order!\nTry again later.",
                             });
                         }
+                        else {
+                            swal({
+                                title: "Error!",
+                                icon: "error",
+                                text: "Sadly, there was an error placing your order!\nTry again later.",
+                            })
+                        }
                     } else {
                         swal({
                             title: "Error!",
@@ -56,7 +63,10 @@ function buyItem(item_id) {
                             text: "There was a critical error in proccessing your order, contact a developer!",
                         });
                     }
-                }
+                },
+                error: function(response){
+                   swal("Error", "An error has occured. Please try again later.", "error");
+               },
             });
         }
     })
@@ -68,15 +78,16 @@ function buyItem(item_id) {
             swal.close();
         }
     });
+    document.getElementsByClassName('sell-modal-box')[0].style.display="none";
 }
 function sellItem(item_id) {
     var name = $('.item-header').text().split("> ")[2];
     var pri = $('#sellerRecieve').val();
     var qty = $('.quantity').val();
     if(qty == 1) {
-        text = 'Are you sure you wish to sell '+qty+' '+name+'for $'+pri+'?';
+        text = 'Are you sure you wish to sell '+qty+' '+name+' for $'+pri+'?';
     } else {
-        text = 'Are you sure you wish to sell '+qty+' '+name+'for $'+pri+' (each)?';
+        text = 'Are you sure you wish to sell '+qty+' '+name+' for $'+pri+' (each)?';
     }
     swal({
         icon: "info",
@@ -105,20 +116,30 @@ function sellItem(item_id) {
                                 icon: "info",
                                 text: "There were no avaliable buy orders at your price, a sell order has been made.",
                             });
+                            document.getElementsByClassName('sell-modal-box')[0].style.display="none";
                         }
-                        if(response.message == 'order_found') {
+                        else if(response.message == 'order_found') {
                             swal({
                                 title: "Success!",
                                 icon: "info",
                                 text: "A buy order has been found at $1000!\nYour money will be transferred shortly.",
                             });
+                            document.getElementsByClassName('sell-modal-box')[0].style.display="none";
                         }
-                        if(response.message == 'order_failed') {
+                        else if(response.message == 'order_failed') {
                             swal({
                                 title: "Error!",
                                 icon: "error",
                                 text: "Sadly, there was an error creating your order!\nTry again later.",
                             });
+                            document.getElementsByClassName('sell-modal-box')[0].style.display="none";
+                        }
+                        else {
+                            swal({
+                                title: "Error!",
+                                icon: "error",
+                                text: "Sadly, there was an error placing your order!\nTry again later.",
+                            })
                         }
                     }
                     else if(response.status == 'user_failure') {
@@ -128,14 +149,19 @@ function sellItem(item_id) {
                                 icon: "error",
                                 text: "You do not have this many "+name+"'s!\nRefrain from trying to exploit.",
                             });
-                        } else {
-                            if(response.message == 'order_invalid') {
-                                swal({
-                                    title: "Error!",
-                                    icon: "error",
-                                    text: "Sadly, there was an error placing your order!\nTry again later.",
-                                });
-                            }
+                        } else if(response.message == 'order_invalid') {
+                            swal({
+                                title: "Error!",
+                                icon: "error",
+                                text: "Sadly, there was an error placing your order!\nTry again later.",
+                            });
+                        }
+                        else {
+                            swal({
+                                title: "Error!",
+                                icon: "error",
+                                text: "Sadly, there was an error placing your order!\nTry again later.",
+                            })
                         }
                     }
                     else {
