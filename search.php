@@ -143,6 +143,16 @@
                             </tr>
                         </tbody>
                     </table>
+                    <span class="results">Showing results: 1-10 of 106 results</span>
+                    <span class="pagination">
+                        <span class="disabled" href="#">❮</span>
+                        <span class="disabled" href="#">1</span>
+                        <a href="#">2</a>
+                        <a href="#">3</a>
+                        <a href="#">4</a>
+                        <a href="#">5</a>
+                        <a href="#">❯</a>
+                    </span>
                 </div>
                 <div class="col-xs-6 searchActivity">
                     <div class="col-xs-24">

@@ -1,9 +1,4 @@
 <?php
-//Make a log class for this.
-require("databaseClass.php");
-
-require("databaseTable.php");
-
 class web_to_server
 {
     public $database;
@@ -38,11 +33,12 @@ class web_to_server
         }
     }
     public function checkIfUserBanned($steamid) {
+        $steamid = $this->database->sanatize($steamid);
         $result = $this->database->select("{$this->databaseTable->ban_time}","{$this->databaseTable->ban_table}","WHERE `{$this->databaseTable->ban_steamid}` = '$steamid'");
         $ban = false;
         while($row=mysqli_fetch_assoc($result)) {
             $timeleft = $row["timeleft"];
-            if($timeleft < 0) {
+            if($timeleft > 0) {
                 $ban = true;
             }
         }
@@ -146,7 +142,7 @@ class web_to_server
     public function checkIfPlayerIsOnline($steamid)
     {
         $steamid = $this->database->sanatize($steamid);
-        $result  = $this->database->select("{$this->databaseTable->players_online}", "{$this->databaseTable->players_table}", "WHERE `{$this->databaseTable->players_steamid}` = '$steamid'");
+        $result  = $this->database->select("*", "{$this->databaseTable->players_table}", "WHERE `{$this->databaseTable->players_steamid}` = '$steamid'");
         if (mysqli_num_rows($result) == 1) {
             $result = mysqli_fetch_assoc($result);
             if ($result["{$this->databaseTable->players_online}"] == 1) {
@@ -195,8 +191,8 @@ class web_to_server
             if ($itemResponse['status'] == 1) {
                 $Online = $this->checkIfPlayerIsOnline($steamid);
                 if ($Online == 1) {
-                    $val1 = $item_id . "," . $steamid;
-                    $this->insertIntoRemote("item_take", "v4b1", "", "$steamid", "$item_id", "$amount", "");
+                    $val1 = $item_id . "@" . $message;
+                    $this->insertIntoRemote("item_take", "all", "", "$steamid", "$val1", "$amount", "");
                 } elseif ($Online == 0) {
                     $playersInventory = $this->fetchPlayersInventory($steamid);
                     if ($playersInventory['status'] == 1) {
@@ -248,8 +244,8 @@ class web_to_server
             if ($this->checkIfItemExistsInGame($item_id)) {
                 $Online = $this->checkIfPlayerIsOnline($steamid);
                 if ($Online == 1) {
-                    $val1 = $item_id . "," . $message;
-                    $this->insertIntoRemote("market_give", "v4b1", "", "$steamid", "$val1", "$amount", "");
+                    $val1 = $item_id . "@" . $message;
+                    $this->insertIntoRemote("item_give", "all", "", "$steamid", "$val1", "$amount", "");
                     $response['status'] = 1;
                     return $response;
                 } elseif ($Online == 0) {
@@ -274,18 +270,21 @@ class web_to_server
                                 }
                             }
                         }
+
+
+                        if ($found == false) {
+                            $newInv .= "{$item_id}: {$amount}; ";
+                        }
+                        //Update Inventory.
+                        $this->database->update("{$this->databaseTable->players_Inventory}", "{$this->databaseTable->players_table}", "'$newInv'", "WHERE `{$this->databaseTable->players_steamid}` = '$steamid'");
+
+                        $response['status'] = 1;
                         return $response;
                     } else {
                         $response['message'] = "There was an error in fetching your inventory, contact a developer.";
                         $response['status']  = 0;
                         return $response;
                     }
-                    if ($found == false) {
-                        $newInv .= "$item: $amt; ";
-                    }
-                    //Update Inventory.
-                    $this->database->update("{$this->databaseTable->players_Inventory}", "{$this->databaseTable->players_table}", "'$newInv'", "WHERE `{$this->databaseTable->players_steamid}` = '$steamid'");
-                    $response['status'] = 1;
                     return $response;
                 } else {
                     $response['message'] = "It seems that you have not joint our server, join us at http://limelightgaming.net";
@@ -323,9 +322,9 @@ class web_to_server
         if (is_numeric($amount) && ($amount > 0)) {
             $steamid = $this->database->sanatize($steamid);
             $message = $this->database->sanatize($message);
-            $Online  = $this->checkIfPlayerIsOnline();
+            $Online  = $this->checkIfPlayerIsOnline($steamid);
             if ($Online == 1) {
-                $this->insertIntoRemote("money_give", "v4b1", "", "$steamid", $amount, "$message", "");
+                $this->insertIntoRemote("money_give", "all", "", "$steamid", $amount, "$message", "");
                 $response['status'] = 1;
                 return $response;
             } elseif ($Online == 0) {
@@ -355,9 +354,9 @@ class web_to_server
         if (is_numeric($amount) && ($amount > 0)) {
             $steamid = $this->database->sanatize($steamid);
             $message = $this->database->sanatize($message);
-            $Online  = $this->checkIfPlayerIsOnline();
+            $Online  = $this->checkIfPlayerIsOnline($steamid);
             if ($Online == 1) {
-                $this->insertIntoRemote("money_take", "v4b1", "", "$steamid", $amount, "$message", "");
+                $this->insertIntoRemote("money_take", "all", "", "$steamid", $amount, "$message", "");
                 $response['status'] = 1;
                 return $response;
             } elseif ($Online == 0) {
@@ -387,7 +386,7 @@ class web_to_server
             }
         }
     }
-
 }
+
 //
 ?>

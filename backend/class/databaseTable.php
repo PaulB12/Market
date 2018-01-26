@@ -1,6 +1,25 @@
 <?php
 class databaseTable {
 
+    //item listings table
+    public $listings_table = "item_listings";
+    public $listings_id = "id";
+    public $listings_steamid = "steamid";
+    public $listings_item_id = "item_id";
+    public $listings_qty = "qty";
+    public $listings_price = "price";
+    public $listings_type = "type";
+    public $listings_status = "status";
+    public $listings_time_created = "time_created";
+    public $listings_last_modified = "last_modified";
+
+    //Log table
+    public $log_table = "log_table";
+    public $log_id = "id";
+    public $log_steamid = "steamid";
+    public $log_type = "type";
+    public $log_json_log = "json_log";
+
     //Remote table
     public $remote_table = "remote";
     public $remote_type = "type";

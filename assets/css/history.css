@@ -49,6 +49,9 @@
     text-decoration: none;
     color: white;
 }
+.disabled {
+    color: black;
+}
 .pagination a.active {
     text-decoration: none;
     background-color: #4CAF50;

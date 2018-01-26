@@ -41,3 +41,10 @@ It's goal is to provide a player based market for selected items in order to lim
 > - **Version 0.2.6 - 25 Jan 2018:**
 > - History.php, History.css is created.
 > - Pages changed to link to History.
+> - **Version 0.3 - 26 Jan 2018:**
+> - Steam auth added but not intergrated
+> - Various bug fixes in APIClass.php
+> - Market class has the feature to complete a buy order upon a sell order being crated
+> - Swapped out to a header/footer system for main files
+> - A few bug fixes in ajax.js
+> - Added pagination to history.php and search.php

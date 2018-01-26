@@ -50,3 +50,30 @@
 .resultHeader {
     color: white;
 }
+.results {
+    color: white;
+}
+.pagination {
+    color: white;
+    float: right;
+    margin-top: -5px;
+    display: inline-block;
+}
+.pagination a, .disabled {
+    background-color: #333333;
+    transition: background-color .3s;
+    border: 1px solid white;
+    padding: 8px 16px;
+    text-decoration: none;
+    color: white;
+}
+.disabled {
+    color: black;
+}
+.pagination a.active {
+    text-decoration: none;
+    background-color: #4CAF50;
+    color: black;
+    border: 1px solid #4CAF50;
+}
+.pagination a:hover:not(.active) {background-color: white; color: black;}
