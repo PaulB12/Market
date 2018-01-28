@@ -22,14 +22,6 @@ class marketClass {
         }
     }
 
-    public function insertIntoListing($item,$qty,$steamid)
-    {
-        $
-        $cols    = "";
-        $vals    = "";
-        $this->database->insert("{$this->databaseTable->remote_table}", $cols, $vals);
-    }
-
     public function checkForBuyOrders($item,$price) {
         if(is_numeric($price) && ($price > 0) && ($price < 100000000)) {
             if($this->api->checkIfItemExistsInGame($item)) {
@@ -73,10 +65,10 @@ class marketClass {
         if(is_numeric($id) && (is_numeric($qty)) && ($qty > 0)) {
             $select = $this->database->select("*","{$this->databaseTable->listings_table}","WHERE `{$this->databaseTable->listings_id}` = $id AND `{$this->databaseTable->listings_status}` = 0");
             if(mysqli_num_rows($select) == 1) {
-                $sellerSelec = $this->database->select("{$this->databaseTable->listings_status}","{$this->databaseTable->listings_table}","WHERE `{$this->databaseTable->listings_id}` = $sellID AND `{$this->databaseTable->listings_status}` = 0");
-                if(mysqli_num_rows($sellerSelec) == 1) {
+                $sellerResult = $this->database->select("*","{$this->databaseTable->listings_table}","WHERE `{$this->databaseTable->listings_id}` = $sellID AND `{$this->databaseTable->listings_status}` = 0");
+                if(mysqli_num_rows($sellerResult) == 1) {
                     $result = mysqli_fetch_assoc($select);
-
+                    $sellerResult = mysqli_fetch_assoc($sellerResult);
                     $buyerID = $result["{$this->databaseTable->listings_steamid}"];
                     $itemid = $result["{$this->databaseTable->listings_item_id}"];
                     $price = $result["{$this->databaseTable->listings_price}"];
@@ -90,8 +82,7 @@ class marketClass {
                         $this->api->addItemToPlayer($itemid, $result["{$this->databaseTable->listings_qty}"], $buyerID, $message);
                         $this->database->update("{$this->databaseTable->listings_status}", "{$this->databaseTable->listings_table}", "1", "WHERE `{$this->databaseTable->listings_id}` = $id");
 
-                        $sellerResult = $this->database->select("{$this->databaseTable->listings_qty}","{$this->databaseTable->listings_table}","WHERE `{$this->databaseTable->listings_id}` = $sellID AND `{$this->databaseTable->listings_status}` = 0");
-                        $sellerResult = mysqli_fetch_assoc($sellerResult);
+
                         $qtyLeft = $sellerResult["{$this->databaseTable->listings_qty}"];
                         $qtySell = $qtyLeft - $qty;
                         if(($qtyLeft - $qty) == 0) {
@@ -100,14 +91,15 @@ class marketClass {
                             $qtySell = $qtyLeft - $qty;
                             $this->database->update("{$this->databaseTable->listings_qty}", "{$this->databaseTable->listings_table}", "$qtySell", "WHERE `{$this->databaseTable->listings_id}` = $id");
                         }
+                        $sellerOwed = $qtySell * $sellerResult["{$this->databaseTable->price}"];
+                        $message = "Market House | You sold {$qtySell} {$itemanme}('s') for {$sellerOwed}!";
+                        $this->api->giveUserMoney($sellerID,$sellerOwed,$message);
                     } else if(($result["{$this->databaseTable->listings_qty}"] - $qty) >= 1) {
 
                         $updateQty = $result["{$this->databaseTable->listings_qty}"] - $qty;
                         $this->api->addItemToPlayer($itemid, $qty, $buyerID, $message);
                         $this->database->update("{$this->databaseTable->listings_qty}", "{$this->databaseTable->listings_table}", "'$updateQty'", "WHERE `{$this->databaseTable->listings_id}` = $id AND `{$this->databaseTable->listings_status}` = 0");
 
-                        $sellerResult = $this->database->select("*","{$this->databaseTable->listings_table}","WHERE `{$this->databaseTable->listings_id}` = $sellID");
-                        $sellerResult = mysqli_fetch_assoc($sellerResult);
                         $qtyLeft = $sellerResult["{$this->databaseTable->listings_qty}"];
                         $qtySell = $qtyLeft - $qty;
                         if(($qtyLeft - $qty) == 0) {

@@ -48,3 +48,5 @@ It's goal is to provide a player based market for selected items in order to lim
 > - Swapped out to a header/footer system for main files
 > - A few bug fixes in ajax.js
 > - Added pagination to history.php and search.php
+> - **Version 0.3.1 - 27 Jan 2018:**
+> - After many failed attempts, upon a new sell listing it'll check for buy orders for that itemid.
