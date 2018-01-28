@@ -180,7 +180,7 @@ class web_to_server
         }
     }
 
-    public function removeItemFromPlayer($item_id, $amount, $steamid, $message)
+    public function removeItemFromPlayer($item_id, $amount, $steamid, $message, $webhook)
     {
         if ((is_numeric($amount)) && ($amount > 0)) {
             $steamid      = $this->database->sanatize($steamid);
@@ -192,7 +192,7 @@ class web_to_server
                 $Online = $this->checkIfPlayerIsOnline($steamid);
                 if ($Online == 1) {
                     $val1 = $item_id . "@" . $message;
-                    $this->insertIntoRemote("item_take", "all", "", "$steamid", "$val1", "$amount", "");
+                    $this->insertIntoRemote("item_take", "all", "", "$steamid", "$val1", "$amount", "$webhook");
                 } elseif ($Online == 0) {
                     $playersInventory = $this->fetchPlayersInventory($steamid);
                     if ($playersInventory['status'] == 1) {

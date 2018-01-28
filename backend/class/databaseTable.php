@@ -19,6 +19,8 @@ class databaseTable {
     public $log_steamid = "steamid";
     public $log_type = "type";
     public $log_json_log = "json_log";
+    public $log_last_modified = "last_modified";
+    public $log_time_created = "time_created";
 
     //Remote table
     public $remote_table = "remote";
