@@ -12,8 +12,9 @@
     $response_array['category_filepath'] = 'Category > Vehicles > Lamboghini Reventon';
     echo json_encode($response_array);
 */
+$page = "index";
 require('backend/header.php');
-echo "
+$logged_in_content = "
             <div class='col-xs-24 inner-body'>
                 <div class='myListings'>
                     <h4 class='col-xs-16 listingsTitle'>My sell listings <small>(2)</small></h4>
@@ -144,5 +145,106 @@ echo "
                     <div class='col-xs-1'></div>
                 </div>
 ";
+
+$logged_out_content = "
+            <div class='col-xs-24 inner-body'>
+                <div class='col-xs-18 marketActivity'>
+                    <div class='col-xs-24 header'>
+                        <h3 class='header-title center-only'>Popular Market Activity</h3>
+                    </div>
+                    <div class='col-xs-24 marketActivityTable'>
+                        <table class='table table-responsive'>
+                            <thead>
+                                <tr>
+                                    <th class='col-xs-10'>ITEM</th>
+                                    <th class='col-xs-4 center'>QUANTITY</th>
+                                    <th class='col-xs-4 center'>PRICE</th>
+                                <tr>
+                            </thead>
+                            <tbody>
+                                <tr class='link' data-href='listing.php?id='>
+                                    <td class='small'>
+                                        <img class='img' src='http://via.placeholder.com/64x64' width='64' height='64'>
+                                        <strong>&nbsp;Fish</strong>
+                                        <p>&nbsp;Food</p>
+                                    </td>
+                                    <td class='center small'>
+                                        2232
+                                    </td>
+                                    <td class='center small'>
+                                        <span>Starting at:</span>
+                                        <br>
+                                        <span>$225</span>
+                                    </td>
+                                </tr>
+                                <tr class='link' data-href='listing.php?id='>
+                                    <td class='small'>
+                                        <img class='img' src='http://via.placeholder.com/64x64' width='64' height='64'>
+                                        <strong>&nbsp;BMW i8</strong>
+                                        <p>&nbsp;Vehicles</p>
+                                    </td>
+                                    <td class='center small'>
+                                        100
+                                    </td>
+                                    <td class='center small'>
+                                        <span>Starting at:</span>
+                                        <br>
+                                        <span>$1,000,000</span>
+                                    </td>
+                                </tr>
+                                <tr class='link' data-href='listing.php?id='>
+                                    <td class='small'>
+                                        <img class='img' src='http://via.placeholder.com/64x64' width='64' height='64'>
+                                        <strong>&nbsp;Lamborghini Reventon</strong>
+                                        <p>&nbsp;Vehicles</p>
+                                    </td>
+                                    <td class='center small'>
+                                        21
+                                    </td>
+                                    <td class='center small'>
+                                        <span>Starting at:</span>
+                                        <br>
+                                        <span>$10,000,000</span>
+                                    </td>
+                                </tr>
+                                <tr class='link' data-href='listing.php?id='>
+                                    <td class='small'>
+                                        <img class='img' src='http://via.placeholder.com/64x64' width='64' height='64'>
+                                        <strong>&nbsp;Tides Truck</strong>
+                                        <p>&nbsp;Vehicles</p>
+                                    </td>
+                                    <td class='center small'>
+                                        19
+                                    </td>
+                                    <td class='center small'>
+                                        <span>Starting at:</span>
+                                        <br>
+                                        <span>$100,000</span>
+                                    </td>
+                                </tr>
+                                <tr class='link' data-href='listing.php?id='>
+                                    <td class='small'>
+                                        <img class='img' src='http://via.placeholder.com/64x64' width='64' height='64'>
+                                        <strong>&nbsp;Gold Fish</strong>
+                                        <p>&nbsp;Food</p>
+                                    </td>
+                                    <td class='center small'>18</td>
+                                    <td class='center small'>
+                                        <span>Starting at:</span>
+                                        <br>
+                                        <span>$1,000</span>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class='col-xs-1'></div>
+                </div>
+";
+if(!isset($_SESSION['steamid'])) {
+    echo $logged_out_content;
+} else {
+    echo $logged_in_content;
+}
 require('backend/footer.php');
 ?>

@@ -52,3 +52,7 @@ It's goal is to provide a player based market for selected items in order to lim
 > - After many failed attempts, upon a new sell listing it'll check for buy orders for that itemid.
 > - **Version 0.3.2 - 28 Jan 2018:**
 > - marketClass.php is finally finished, started working on api.php.
+> - **Version 0.3.3 - 28 Jan 2018:**
+> - Steam authentication added to all pages.
+> - All pages hooked up to the new header/footer system.
+> - Steam auth settings changed

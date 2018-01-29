@@ -1,12 +1,72 @@
 <?php
-    $page = "index";
+    require("backend/steamauth/steamauth.php");
+    $steam = "";
+    if(!isset($_SESSION['steamid'])) {
+        $steam .= "<div style='float: right; margin-top: -70px;'>
+            <a href='?login'><img src='http://cdn.steamcommunity.com/public/images/signinthroughsteam/sits_01.png'></a>
+            </div>
+        ";
+    } else {
+        $steam .= "<div style='float: right; margin-top: -70px; margin-right: 50px;'>
+                    <a href='?logout'><h4 style='color: white; text-decoration: underline;'>Logout</h4></a>
+            </div>
+        ";
+    }
+
     $filepath = "/market/";
     if(!isset($page)) {
         $page = "";
     }
     if($page == "index") {
         $categories = true;
-        $additional = "<link rel='stylesheet' href='/market/assets/css/index.css'>";
+        $logged_in = false;
+        $additional = "<link rel='stylesheet' href='{$filepath}assets/css/index.css'>";
+    }
+    if($page == "inventory") {
+        $categories = false;
+        $logged_in = true;
+        $additional = "
+        <!-- Chart JS file -->
+        <script src='https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.4.0/Chart.min.js'></script>
+
+        <!-- Sweet Alert file -->
+        <script src='https://unpkg.com/sweetalert/dist/sweetalert.min.js'></script>
+
+        <!-- Market CSS Files !-->
+        <link rel='stylesheet' href='{$filepath}assets/css/inventory.css'>
+        <link rel='stylesheet' href='{$filepath}assets/css/template.css'>
+        <link rel='stylesheet' href='{$filepath}assets/css/sell-modal.css'>
+        <link rel='stylesheet' href='{$filepath}assets/css/ajax-loader.css'>
+        ";
+    }
+    if($page == "listing") {
+        $categories = false;
+        $logged_in = false;
+        $additional = "
+        <!-- Chart JS file -->
+        <script src='https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.4.0/Chart.min.js'></script>
+
+        <!-- Sweet Alert file -->
+        <script src='https://unpkg.com/sweetalert/dist/sweetalert.min.js'></script>
+
+        <!-- Market CSS Files !-->
+        <link rel='stylesheet' href='{$filepath}assets/css/listing.css'>
+        <link rel='stylesheet' href='{$filepath}assets/css/buy-modal.css'>
+        <link rel='stylesheet' href='{$filepath}assets/css/sell-modal.css'>
+        <link rel='stylesheet' href='{$filepath}assets/css/ajax-loader.css'>";
+
+    }
+    if($page == "history") {
+        $categories = true;
+        $logged_in = true;
+        $additional = "
+            <link rel='stylesheet' href='/market/assets/css/history.css'>
+        ";
+    }
+    if($page == "search") {
+        $categories = true;
+        $logged_in = false;
+        $additional = "<link rel='stylesheet' href='/market/assets/css/search.css'>";
     }
     if(!isset($categories)) {
         $categories = false;
@@ -17,6 +77,11 @@
                 $counter = 0;
         } else {
             $counter = $_GET["category"];
+        }
+    }
+    if($logged_in) {
+        if(!isset($_SESSION['steamid'])) {
+            header("location: {$filepath}");
         }
     }
     $html = "<html>
@@ -49,6 +114,7 @@
                     <h1 class='header-title'>Community Market</h1>
                     <p class='header-text'>Buy and sell in-game items with other LimeLight community members.</p>
                 </a>
+                ".$steam."
             </div>";
     echo $html;
 ?>

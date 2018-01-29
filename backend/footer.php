@@ -2,6 +2,23 @@
     if($page == "index") {
         $footer = "<script src='{$filepath}assets/js/index.js'></script>";
     }
+    if($page == "inventory") {
+        $footer = "<script src='assets/js/inventory.js'></script>
+        <script src='assets/js/sell-modal.js'></script>
+        <script src='assets/js/ajax.js'></script>";
+    }
+    if($page == "history") {
+        $footer = "<script src='assets/js/index.js'></script>";
+    }
+    if($page == "listing") {
+        $footer = "<script src='assets/js/buy-modal.js'></script>
+        <script src='assets/js/sell-modal.js'></script>
+        <script src='assets/js/ajax.js'></script>
+        <script src='assets/js/listing.js'></script>";
+    }
+    if($page == "search") {
+        $footer = "<script src='assets/js/search.js'></script>";
+    }
     if($categories) {
          echo "                <div class='col-xs-6 searchActivity'>
                     <div class='col-xs-24'>
