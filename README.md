@@ -56,3 +56,4 @@ It's goal is to provide a player based market for selected items in order to lim
 > - Steam authentication added to all pages.
 > - All pages hooked up to the new header/footer system.
 > - Steam auth settings changed
+> - Removed obsolete files.
